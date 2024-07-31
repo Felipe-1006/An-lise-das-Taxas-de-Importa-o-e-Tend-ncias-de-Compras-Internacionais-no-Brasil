@@ -1,0 +1,29 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.eggs
+*.env
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Environment files
+.env
+.venv
+env/
+venv/
+ENV/
+
+# MacOS
+.DS_Store
+
+# Logs
+*.log
