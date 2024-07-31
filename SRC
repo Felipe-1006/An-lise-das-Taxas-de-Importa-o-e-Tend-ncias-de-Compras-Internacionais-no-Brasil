@@ -1,0 +1,37 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import plotly.express as px
+import plotly.graph_objects as go
+
+# Dados fictícios para o exemplo
+data = {
+    "Produto": ["Acima de $50", "Abaixo de $50", "ICMS", "SISCOMEX", "PIS", "COFINS", "IPI"],
+    "Taxa (%)": [60, 20, 17, 185, 2.1, 9.65, 50],
+    "Valores (R$)": [330.75, 236.25, 50, 185, 20, 45, 100]
+}
+
+df = pd.DataFrame(data)
+
+# Gráfico de barras para mostrar as taxas de importação
+plt.figure(figsize=(10, 6))
+plt.bar(df["Produto"], df["Taxa (%)"], color='skyblue')
+plt.xlabel('Tipos de Produtos/Taxas')
+plt.ylabel('Taxa (%)')
+plt.title('Taxas de Importação de Produtos')
+plt.show()
+
+# Gráfico de pizza para mostrar a distribuição dos valores das taxas alfandegárias
+plt.figure(figsize=(8, 8))
+plt.pie(df["Valores (R$)"], labels=df["Produto"], autopct='%1.1f%%', colors=plt.cm.Paired(np.arange(len(df))))
+plt.title('Distribuição das Taxas Alfandegárias')
+plt.show()
+
+# Gráfico 3D Interativo para Taxas e Valores
+fig = px.scatter_3d(df, x='Produto', y='Taxa (%)', z='Valores (R$)', color='Produto')
+fig.update_layout(title='Distribuição 3D das Taxas e Valores de Importação')
+fig.show()
+
+# Gráfico de barras interativo com Plotly para valores das taxas
+fig = px.bar(df, x='Produto', y='Valores (R$)', title='Valores das Taxas Alfandegárias', color='Produto')
+fig.show()
